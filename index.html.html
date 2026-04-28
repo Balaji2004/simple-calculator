@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator</title>
+</head>
+<body>
+
+    <h1>Simple Calculator</h1>
+
+    <!-- Input fields -->
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+
+    <br><br>
+
+    <!-- Buttons -->
+    <button onclick="add()">Add (+)</button>
+    <button onclick="subtract()">Subtract (-)</button>
+    <button onclick="multiply()">Multiply (*)</button>
+    <button onclick="divide()">Divide (/)</button>
+
+    <h2 id="result">Result: </h2>
+
+    <!-- JavaScript -->
+    <script>
+        function getValues() {
+            let n1 = parseFloat(document.getElementById("num1").value);
+            let n2 = parseFloat(document.getElementById("num2").value);
+
+            if (isNaN(n1) || isNaN(n2)) {
+                alert("Please enter valid numbers");
+                return null;
+            }
+            return { n1, n2 };
+        }
+
+        function add() {
+            let val = getValues();
+            if (!val) return;
+            document.getElementById("result").innerText = "Result: " + (val.n1 + val.n2);
+        }
+
+        function subtract() {
+            let val = getValues();
+            if (!val) return;
+            document.getElementById("result").innerText = "Result: " + (val.n1 - val.n2);
+        }
+
+        function multiply() {
+            let val = getValues();
+            if (!val) return;
+            document.getElementById("result").innerText = "Result: " + (val.n1 * val.n2);
+        }
+
+        function divide() {
+            let val = getValues();
+            if (!val) return;
+
+            if (val.n2 === 0) {
+                alert("Cannot divide by zero");
+                return;
+            }
+
+            document.getElementById("result").innerText = "Result: " + (val.n1 / val.n2);
+        }
+    </script>
+
+</body>
+</html>
